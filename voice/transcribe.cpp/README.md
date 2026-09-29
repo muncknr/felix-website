@@ -1,0 +1,1 @@
+# (Content of transcribe.cpp README)
