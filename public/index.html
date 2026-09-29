@@ -21,6 +21,18 @@
       --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
     }
 
+    /* Girl Mode Palette */
+    .girl-mode {
+      --paper: #fdf2f8;
+      --paper-deep: #fce7f3;
+      --surface: #ffffff;
+      --ink: #9d174d;
+      --muted: #be185d;
+      --line: #fbcfe8;
+      --cat-bubble: #fce7f3;
+      --user-bubble: #db2777;
+    }
+
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
 
@@ -35,6 +47,7 @@
       place-items: center;
       padding: 24px;
       line-height: 1.6;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     button, input { font: inherit; }
@@ -101,15 +114,34 @@
     }
   </style>
 </head>
-<body>
+<body class="main-theme">
   <div class="chat-container">
     <header class="page-title">
       <img src="felix-header.png" alt="Felix Header" />
-      <div class="presence">Online</div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+        <div class="presence">Online</div>
+        <div style="font-size: .75rem; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          Girl Mode
+          <input type="checkbox" id="girlModeToggle" style="cursor: pointer;">
+        </div>
+      </div>
     </header>
     <main class="messages" id="messages">
       <!-- Messages will appear here -->
     </main>
   </div>
+
+  <script>
+    const toggle = document.getElementById('girlModeToggle');
+    const body = document.body;
+
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        body.classList.add('girl-mode');
+      } else {
+        body.classList.remove('girl-mode');
+      }
+    });
+  </script>
 </body>
 </html>
